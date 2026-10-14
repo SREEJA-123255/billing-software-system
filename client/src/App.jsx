@@ -123,8 +123,11 @@ function App() {
               <Route element={<ProtectedRoute allowedRoles={getAllowedRoles("billing")} />}>
                 <Route path="/billing" element={<Billing />} />
               </Route>
+              {/* Sales View: ADMIN, MANAGER, CASHIER; Sales Create (Backoffice): ADMIN, MANAGER only */}
               <Route element={<ProtectedRoute allowedRoles={getAllowedRoles("sales")} />}>
                 <Route path="/sales" element={<Sales />} />
+              </Route>
+              <Route element={<ProtectedRoute allowedRoles={getAllowedRoles("sales", "manage")} />}>
                 <Route path="/sales/new" element={<NewSale />} />
               </Route>
 
